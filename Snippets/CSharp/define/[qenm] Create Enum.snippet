@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Enum</Title>
+      <Author>上海全迹</Author>
+      <Description>创建一个枚举</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qenm</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Name</ID>
+          <ToolTip>Name</ToolTip>
+          <Default>Name</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>枚举描述</ID>
+          <ToolTip>枚举描述</ToolTip>
+          <Default>枚举描述</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[/// <summary>
+/// $枚举描述$
+/// </summary>
+public enum $Name$Enum
+{
+    $end$       
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

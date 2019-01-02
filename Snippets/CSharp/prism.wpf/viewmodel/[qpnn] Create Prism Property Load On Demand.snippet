@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Property Load On Demand</Title>
+      <Author>上海全迹</Author>
+      <Description>创建Prism 绑定属性 懒加载</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qpnn</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Field</ID>
+          <ToolTip>Field</ToolTip>
+          <Default>Field</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>field</ID>
+          <ToolTip>field</ToolTip>
+          <Default>field</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>type</ID>
+          <ToolTip>type</ToolTip>
+          <Default>type</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>属性描述</ID>
+          <ToolTip>属性描述</ToolTip>
+          <Default>属性描述</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[/// <summary>
+/// $属性描述$ 属性字段
+/// <para>关联属性: $Field$</para>
+/// </summary>
+private $type$ _$field$;
+/// <summary>
+/// $属性描述$
+/// </summary>
+public $type$ $Field$
+{
+	get 
+	{ 
+		if(_$field$==null) _$field$ = new $type$();
+		return _$field$;
+	}
+	set { SetProperty(ref _title, value); }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

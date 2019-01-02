@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Routed Event</Title>
+      <Author>上海全迹</Author>
+      <Description>创建一个路由事件</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qentr</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Name</ID>
+          <ToolTip>Name</ToolTip>
+          <Default>Name</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="false">
+          <ID>classname</ID>
+          <ToolTip>类名</ToolTip>
+          <Default>ClassNamePlaceholder</Default>
+          <Function>ClassName()</Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[public static readonly RoutedEvent $Name$Event = EventManager.RegisterRoutedEvent(
+    "$Name$", RoutingStrategy.Bubble,
+    typeof(RoutedEventHandler), typeof($classname$)
+    );
+
+public event RoutedEventHandler $Name$
+{
+    add
+    {
+        AddHandler($classname$.$Name$Event, value);
+    }
+    remove
+    {
+        RemoveHandler($classname$.$Name$Event, value);
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

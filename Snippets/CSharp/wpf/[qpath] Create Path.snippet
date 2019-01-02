@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Path</Title>
+      <Author>上海全迹</Author>
+      <Description>创建一个路径</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qpath</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>path</ID>
+          <ToolTip>path</ToolTip>
+          <Default>path</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[//创建路径对象
+Path $path$ = new Path();
+//创建几何路径对象
+PathGeometry pathGeometry = new PathGeometry();
+//创建路径线
+PathFigure pathFigure = new PathFigure();
+//TODO 设置路径起始位置
+pathFigure.StartPoint = new Point(400, 300);
+//创建路径线容器
+PathSegmentCollection segmentCollection = new PathSegmentCollection();
+//增加线段到路径线容器中
+segmentCollection.Add(new LineSegment() { Point = new Point(600, 100) });
+segmentCollection.Add(new LineSegment() { Point = new Point(300, 200) });
+segmentCollection.Add(new LineSegment() { Point = new Point(200, 100) });
+$end$
+//设置路径线段组成部分
+pathFigure.Segments = segmentCollection;
+//设置集合图形的路径组合
+pathGeometry.Figures = new PathFigureCollection() { pathFigure };
+//设置路径对象的集合图形
+$path$.Data = pathGeometry;
+//设置线条
+$path$.Stroke = new SolidColorBrush(Colors.BlueViolet);
+//设置线宽
+$path$.StrokeThickness = 2;]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

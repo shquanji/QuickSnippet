@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Create ViewModel impl INavigatio...</Title>
+      <Author>上海全迹</Author>
+      <Description>创建一个实现INavigationAware的导航ViewModel</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qvmn</Shortcut>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>ViewA</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>ViewA</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>container</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>container</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>ViewType</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>ViewType</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>ViewName</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>ViewName</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Navigation</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>Navigation</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>TargetRegion</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>TargetRegion</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[/// <summary>
+/// 界面逻辑类
+/// </summary>
+public class $ViewA$ViewModel : BindableBase, INavigationAware
+{
+    /// <summary>
+    /// 构造<see cref="ViewAViewModel"/> 的新实例
+    /// </summary>
+    public $ViewA$ViewModel()
+    {
+
+    }
+
+    /// <summary>
+    /// 被导航到本界面时调用。
+    /// </summary>
+    /// <param name="navigationContext">导航上下文</param>
+    public void OnNavigatedTo(NavigationContext navigationContext)
+    {
+            
+    }
+
+    /// <summary>
+    /// 调用以确定此实例是否可以处理导航请求。
+    /// </summary>
+    /// <param name="navigationContext">导航上下文</param>
+    /// <returns>
+    /// <see langword="true" />可以处理导航请求 
+    /// <see langword="false" />不可以处理导航请求</returns>
+    public bool IsNavigationTarget(NavigationContext navigationContext)
+    {
+        return true;
+    }
+
+    /// <summary>
+    /// 当导航离开此界面
+    /// </summary>
+    /// <param name="navigationContext">导航上下文</param>
+    public void OnNavigatedFrom(NavigationContext navigationContext)
+    {
+            
+    }
+}
+//Todo Module 部分
+/*
+public void Initialize()
+{
+    $container$.RegisterTypeForNavigation<$ViewType$>("$ViewName$");
+}
+//Todo ViewModel 部分 跳转使用
+public void $Navigation$()
+{
+    IRegionManager.RequestNavigate("$TargetRegion$", "$ViewName$");     
+}
+*/]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

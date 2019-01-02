@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Single Instance Class</Title>
+      <Author>上海全迹</Author>
+      <Description>单例模式</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qsin</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>ClassName</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>ClassName</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[#region 单例模式
+
+private $ClassName$()
+{
+
+}
+
+private static readonly object LockObj = new object();
+
+private static $ClassName$ _instance;
+
+/// <summary>
+/// 获得对象实例
+/// </summary>
+public static $ClassName$ Instance
+{
+    get
+    {
+        lock (LockObj)
+        {
+            if (_instance == null)
+            {
+                _instance = new $ClassName$();
+            }
+            return _instance;
+        }
+    }
+}
+
+#endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

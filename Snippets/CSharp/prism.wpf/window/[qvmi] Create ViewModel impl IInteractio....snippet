@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+        <Title>Create ViewModel impl IInteractio...</Title>
+        <Author>上海全迹</Author>
+        <Description>创建一个实现IInteractionRequestAware的导航ViewModel</Description>
+        <HelpUrl>
+        </HelpUrl>
+        <Shortcut>qvmi</Shortcut>
+        <SnippetTypes>
+          <SnippetType>Expansion</SnippetType>
+        </SnippetTypes>
+      </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>类</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>类</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Name</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>Name</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[/// <summary>
+/// $类$
+/// </summary>
+public class $Name$ViewModel : BindableBase, IInteractionRequestAware
+{
+    /// <summary>
+    /// 构造<see cref="NameViewModel"/> 的新实例
+    /// </summary>
+    public $Name$ViewModel()
+    {
+
+    }
+
+    #region 确认
+    /// <summary>
+    /// 确认 封装命令字段
+    /// </summary>
+    private ICommand _confirmCommand;
+    /// <summary>
+    /// 确认 命令
+    /// </summary>
+    public ICommand ConfirmCommand
+    {
+        get
+        {
+            if (_confirmCommand == null) _confirmCommand = new DelegateCommand(ConfirmExecute);
+            return _confirmCommand;
+        }
+        set { _confirmCommand = value; }
+    }
+
+    /// <summary>
+    /// 确认 命令执行方法
+    /// </summary>
+    public void ConfirmExecute()
+    {
+        (Notification as Confirmation).Confirmed = true;
+        FinishInteraction();
+
+    }
+    #endregion
+
+    #region 取消
+    /// <summary>
+    /// 取消 封装命令字段
+    /// </summary>
+    private ICommand _cancelCommand;
+    /// <summary>
+    /// 取消 命令
+    /// </summary>
+    public ICommand CancelCommand
+    {
+        get
+        {
+            if (_cancelCommand == null) _cancelCommand = new DelegateCommand(CancelExecute);
+            return _cancelCommand;
+        }
+        set { _cancelCommand = value; }
+    }
+
+    /// <summary>
+    /// 取消 命令执行方法
+    /// </summary>
+    public void CancelExecute()
+    {
+        (Notification as Confirmation).Confirmed = false;
+        FinishInteraction();
+    }
+    #endregion
+
+    /// <summary>
+    /// 完成交互动作
+    /// </summary>
+    public Action FinishInteraction { get; set; }
+
+    /// <summary>
+    /// 通知对象
+    /// </summary>
+    public INotification Notification { get; set; }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

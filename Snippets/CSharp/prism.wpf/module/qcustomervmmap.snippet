@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>qcustomervmmap</Title>
+      <Author>上海全迹</Author>
+      <Description>自定义View与ViewModel映射关系 位于Bootstrapper</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qcustomervmmap</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>MainWindow</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>MainWindow</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>MainWindowViewModel</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>MainWindowViewModel</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[protected override void ConfigureViewModelLocator()
+{
+    base.ConfigureViewModelLocator();
+
+    // type / type
+    //ViewModelLocationProvider.Register(typeof($MainWindow$).ToString(), typeof(CustomViewModel));
+
+    // type / factory
+    //ViewModelLocationProvider.Register(typeof($MainWindow$).ToString(), () => Container.Resolve<CustomViewModel>());
+
+    // generic factory
+    //ViewModelLocationProvider.Register<$MainWindow$>(() => Container.Resolve<CustomViewModel>());
+
+    // generic type
+    ViewModelLocationProvider.Register<$MainWindow$, $MainWindowViewModel$>();
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
