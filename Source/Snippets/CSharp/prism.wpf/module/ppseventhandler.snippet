@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>ppseventhandler</Title>
+      <Author>上海全迹</Author>
+      <Description>Prism 订阅推送事件 订阅方和发送方代码</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>ppseventhandler</Shortcut>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Name</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>Name</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>ea</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>ea</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>NameEvent</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>NameEvent</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>arg</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>arg</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>NameEventHandler</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>NameEventHandler</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[/// <summary>
+/// 构造函数
+/// </summary>
+/// <param name="ea">事件聚合器</param>
+public $Name$ViewModel(IEventAggregator $ea$)
+{
+    //发布
+    $ea$.GetEvent<$NameEvent$>().Publish($arg$);
+    //订阅
+    $ea$.GetEvent<$NameEvent$>().Subscribe($NameEventHandler$);
+}
+
+/// <summary>
+/// 订阅事件处理
+/// </summary>
+/// <param name="arg">参数</param>
+private void $NameEventHandler$(object $arg$)
+{
+            
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

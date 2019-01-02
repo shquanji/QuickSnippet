@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Async Method</Title>
+      <Author>上海全迹</Author>
+      <Description>使用.net 4.5 async 方式创建方法</Description>
+      <HelpUrl></HelpUrl>
+      <Shortcut>qam</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>Name</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>Name</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Description</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>Description</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[#region $Description$
+
+/// <summary>
+/// 获取或设置 $Description$ 执行标记
+/// </summary>
+public bool $Name$RunFlag = false;
+
+
+/// <summary>
+/// $Description$ 命令执行方法
+/// </summary>
+public void $Name$()
+{
+    $Name$Async();
+}
+
+/// <summary>
+/// $Description$ 命令执行方法异步响应处理
+/// </summary>
+/// <param name="timeout">超时时间</param>
+public async void $Name$Async()
+{
+    try
+    {
+        $Name$RunFlag = true;
+        await $Name$AsyncTask();
+
+        $Name$RunFlag = false;
+    }
+    catch (Exception ex)
+    {
+        //TODO 处理异常
+    }
+    finally
+    {
+        $Name$RunFlag = false;
+    }
+}
+
+/// <summary>
+/// $Description$ 命令执行方法异步实现
+/// </summary>
+/// <returns>Task.</returns>
+private async Task $Name$AsyncTask()
+{
+    await Task.Delay(10000);
+}
+
+
+#endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Command</Title>
+      <Author>上海全迹</Author>
+      <Description>创建一个命令</Description>
+      <HelpUrl>
+      </HelpUrl>
+      <Shortcut>qccmd</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>默认</ID>
+          <ToolTip>默认</ToolTip>
+          <Default>默认</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Name</ID>
+          <ToolTip>Name</ToolTip>
+          <Default>Name</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>ContainerDragBehavior</ID>
+          <ToolTip>ContainerDragBehavior</ToolTip>
+          <Default>ContainerDragBehavior</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[/// <summary>
+/// $默认$命令依赖属性
+/// </summary>
+public static readonly DependencyProperty $Name$CommandProperty = DependencyProperty.Register("$Name$Command", typeof(ICommand), typeof($ContainerDragBehavior$), new PropertyMetadata(null));
+
+/// <summary>
+/// $默认$命令参数依赖属性
+/// </summary>
+public static readonly DependencyProperty $Name$CommandParameterProperty = DependencyProperty.Register("$Name$CommandParameter", typeof(object), typeof($ContainerDragBehavior$), new PropertyMetadata(null));
+
+/// <summary>
+/// 获取或设置$默认$命令依赖属性
+/// </summary>
+public ICommand $Name$Command
+{
+    get
+    {
+        return (ICommand)base.GetValue($ContainerDragBehavior$.$Name$CommandProperty);
+    }
+    set
+    {
+        base.SetValue($ContainerDragBehavior$.$Name$CommandProperty, value);
+    }
+}
+
+/// <summary>
+/// 获取或设置$默认$命令参数依赖属性
+/// </summary>
+public object $Name$CommandParameter
+{
+    get
+    {
+        return base.GetValue($ContainerDragBehavior$.$Name$CommandParameterProperty);
+    }
+    set
+    {
+        base.SetValue($ContainerDragBehavior$.$Name$CommandParameterProperty, value);
+    }
+}
+
+/// <summary>
+/// 执行$默认$命令
+/// </summary>
+/// <param name="parameter">$默认$命令参数</param>
+private void Execute$Name$Command(object parameter)
+{
+    object commandParameter = BindingOperations.IsDataBound(this, $ContainerDragBehavior$.$Name$CommandParameterProperty) ? this.$Name$CommandParameter : parameter;
+    ICommand command = this.$Name$Command;
+    if (command != null && command.CanExecute(commandParameter))
+    {
+        command.Execute(commandParameter);
+    }
+}]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

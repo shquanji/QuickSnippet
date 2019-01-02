@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Create Prism AsyncCommandWithTimeout</Title>
+      <Author>上海全迹</Author>
+      <Description>创建Prism的异步命令处理</Description>
+      <HelpUrl></HelpUrl>
+      <Shortcut>qamdt</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="true">
+          <ID>命令描述</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>命令描述</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>Command</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>Command</Default>
+          <Function>
+          </Function>
+        </Literal>
+        <Literal Editable="true">
+          <ID>command</ID>
+          <ToolTip>
+          </ToolTip>
+          <Default>command</Default>
+          <Function>
+          </Function>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp" Delimiter="$"><![CDATA[#region $命令描述$
+
+/// <summary>
+/// 获取或设置 $命令描述$ 执行标记 属性字段
+/// <para>关联属性: $Command$RunFlag</para>
+/// </summary>
+private bool _$command$RunFlag;
+/// <summary>
+/// 获取或设置 $命令描述$ 执行标记
+/// </summary>
+public bool $Command$RunFlag
+{
+    get { return _$command$RunFlag; }
+    set
+    {
+        SetProperty(ref _$command$RunFlag, value);
+        $Command$Command.RaiseCanExecuteChanged();
+    }
+}
+/// <summary>
+/// 获取或设置 $命令描述$ 取消标记
+/// </summary>
+public CancellationTokenSource $Command$CancelToken { get; set; }
+
+/// <summary>
+/// $命令描述$ 封装命令字段
+/// </summary>
+private DelegateCommand _$command$Command;
+/// <summary>
+/// $命令描述$ 命令
+/// </summary>
+public DelegateCommand $Command$Command
+{
+    get
+    {
+        if (_$command$Command == null) _$command$Command = new DelegateCommand($Command$Execute, $Command$CanExecute);
+        return _$command$Command;
+    }
+    set { _$command$Command = value; }
+}
+
+private bool $Command$CanExecute()
+{
+    return !$Command$RunFlag;
+}
+
+/// <summary>
+/// $命令描述$ 命令执行方法
+/// </summary>
+public void $Command$Execute()
+{
+    $Command$ExecuteAsync(2500);
+}
+
+/// <summary>
+/// $命令描述$ 命令执行方法异步响应处理
+/// </summary>
+/// <param name="timeout">超时时间</param>
+public async void $Command$ExecuteAsync(int timeout)
+{
+    try
+    {
+        //设置超时时间
+        $Command$CancelToken = new CancellationTokenSource(timeout);
+        $Command$RunFlag = true;
+        Task task = $Command$ExecuteTask($Command$CancelToken.Token);
+        //超时检查任务
+        Task.Factory.StartNew(() =>
+        {
+            Task.Delay(timeout).Wait();
+            $Command$CancelToken.Cancel();
+            $Command$RunFlag = false;
+        });
+        await task;
+
+        $Command$RunFlag = false;
+        $Command$CancelToken.Dispose();
+    }
+    catch (Exception ex)
+    {
+        //TODO 处理异常
+    }
+    finally
+    {
+        $Command$RunFlag = false;
+    }
+}
+
+/// <summary>
+/// $命令描述$ 命令执行方法异步实现
+/// </summary>
+/// <param name="cancellationToken">取消标记</param>
+/// <returns>Task.</returns>
+private async Task $Command$ExecuteTask(CancellationToken cancellationToken)
+{
+    await Task.Delay(10000);
+    //实现退出逻辑
+    if (cancellationToken.IsCancellationRequested)
+    {
+        //外部取消执行
+    }
+    else
+    {
+        //正常完成
+    }
+}
+
+
+#endregion]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
